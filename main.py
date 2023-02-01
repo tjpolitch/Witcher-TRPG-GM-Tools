@@ -11,9 +11,11 @@ terrainList = ["plains", "forest", "dark forest", "hills", "mountains", "high mo
 seasonList = ["summer", "autumn", "winter", "spring"]
 monthList = ["na", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
 snowDepth = ["none", "light", "medium", "heavy"]
+moonList = ["full moon", "waning gibbous", "last quarter", "waning crescent", "new moon", "waxing crescent", "first quarter", "waxing gibbous"]
 road = bool
 choice = ""
 
+todayMoon = random.randint(0,7)
 todayDate = datetime.datetime(1272, 5, 1)
 dayPart = 0
 currentLocation = random.randint(0, 9)
@@ -23,6 +25,8 @@ sigma = 6
 mu = 0
 time = 0
 day = 1
+
+choice = ""
 
 # Takes user input for the time of day (in minutes) and turns into an integer
 timeInput = input("Enter a time of day:")
@@ -105,6 +109,7 @@ def snowing():
         if snowChance == 1:
             precipitation = precList[0]
 
+
 snowing()
 
 # Function to create a persistent level of snow which rises if it snows and recedes if it doesn't - the persistnce is not included yet
@@ -121,17 +126,7 @@ def snow_levels():
 
 snow_levels()
 
-print(terrainList[currentLocation])
 # print(monthList[currentMonth]) - cannot get this to work
-print(monthList[1])
-print(temp, "degrees")
-
-
-
-def tell_weather():
-    print("The weather is currently", weather, "and", precipitation)
-    print("Wind is", random.choice(windList))
-    print("The snow level is ", snowDepth[snowLevel])
 
 # Function to convert the time of the day (in minutes) into a part of a day e.g. midday.
 def convert_time_to_daypart():
@@ -157,14 +152,45 @@ def convert_time_to_daypart():
 
 convert_time_to_daypart()
 
-print("It is", timeList[dayPart])
-
 convertedDay = str(day)
 
-# print("It is " + dayPart + " of day " + convertedDay + ".")
-print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"), ",", todayDate.strftime("%Y"))
 
-tell_weather()
+# Loop to create a menu. This is not final and some options are just for testing at the moment.
+while True:
+    print("1) Tell date")
+    print("2) Tell time (day part + month)")
+    print("3) Look at moon")
+    print("4) Tell weather")
+    print("5) Tell snow levels (number and description)")
+    print("6) Tell wind")
+    print("7) Tell terrain")
+    print("8) Quit")
 
+    choice = input("Enter choice:")
 
-print(snowLevel)
+    choice = choice.strip()
+
+    if (choice == "1"):
+        # not connected to other stats yet
+        print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"), ",",
+              todayDate.strftime("%Y"))
+    elif (choice == "2"):
+        print("It is", timeList[dayPart])
+        print(monthList[1])
+    elif (choice == "3"):
+        print(moonList[todayMoon])
+    elif (choice == "4"):
+        print(monthList[1])
+        print(temp, "degrees")
+        print("The weather is currently", weather, "and", precipitation)
+    elif (choice == "5"):
+        print("The snow level is ", snowDepth[snowLevel])
+        print(snowLevel)
+    elif (choice == "6"):
+        print("Wind is", random.choice(windList))
+    elif (choice == "7"):
+        print(terrainList[currentLocation])
+    elif (choice == "8" or "q"):
+        break
+    else:
+        print("Invalid option. Please try again.")
