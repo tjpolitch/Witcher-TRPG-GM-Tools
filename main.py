@@ -97,20 +97,24 @@ def tell_weather():
     if temp >= 31:
         weather = tempList[4]
 
+
 tell_weather()
 
 precipitation = random.choice(precList)
 
+
 # Function that determines whether it is snowing based on whether the temp is freezing (below 0) and then giving it a 50/50 chance
 # A boolean should probably be added in here
-def snowing():
+def snowing(precipitation):
     if temp < 0:
         snowChance = random.randint(1, 2)
         if snowChance == 1:
             precipitation = precList[0]
+    return precipitation
 
 
-snowing()
+snowing(random.choice(precList))
+
 
 # Function to create a persistent level of snow which rises if it snows and recedes if it doesn't - the persistnce is not included yet
 def snow_levels():
@@ -180,7 +184,6 @@ while True:
     elif (choice == "3"):
         print(moonList[todayMoon])
     elif (choice == "4"):
-        print(monthList[1])
         print(temp, "degrees")
         print("The weather is currently", weather, "and", precipitation)
     elif (choice == "5"):
