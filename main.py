@@ -25,13 +25,11 @@ sigma = 6
 mu = 0
 time = 0
 day = 1
-
+temp = 0
+precipitation = 0
+snowLevel = 0
+weather = 0
 choice = ""
-
-# Takes user input for the time of day (in minutes) and turns into an integer
-timeInput = input("Enter a time of day:")
-timeInput = int(timeInput)
-time = timeInput
 
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
@@ -73,19 +71,10 @@ def monthly_temps():
         mu = 0
         return mu
 
-#Provides a semi-random temperature based on the monthly average on a gaussian curve
-temp = round(random.gauss(mu, sigma))
-
-# While loop to iterate the day counter based on the number of minutes inputted by user
-while time > 1440:
-    time = time - 1440
-    day = day + 1
-    todayDate = todayDate + datetime.timedelta(days=1)
 
 # Provide a weather description based on the temperature
 def tell_weather():
-    global weather
-    weather = 0
+    global weather, temp
     if temp < 1:
         weather = tempList[0]
     if temp >= 1 < 11:
@@ -96,16 +85,13 @@ def tell_weather():
         weather = tempList[3]
     if temp >= 31:
         weather = tempList[4]
-
-
-tell_weather()
-
-precipitation = random.choice(precList)
+    return weather, temp
 
 
 # Function that determines whether it is snowing based on whether the temp is freezing (below 0) and then giving it a 50/50 chance
 # A boolean should probably be added in here
-def snowing(precipitation):
+def snowing():
+    global temp, precipitation
     if temp < 0:
         snowChance = random.randint(1, 2)
         if snowChance == 1:
@@ -113,24 +99,17 @@ def snowing(precipitation):
     return precipitation
 
 
-snowing(random.choice(precList))
-
-
 # Function to create a persistent level of snow which rises if it snows and recedes if it doesn't - the persistnce is not included yet
 def snow_levels():
     global snowLevel
-    snowLevel = 0
     if temp <= 0 and precipitation == precList[0]:
         snowLevel = snowLevel + 1
     elif temp > 0 and snowLevel > 0:
         snowLevel = - 1
     else:
         snowLevel = snowLevel = 0
+    return snowLevel
 
-
-snow_levels()
-
-# print(monthList[currentMonth]) - cannot get this to work
 
 # Function to convert the time of the day (in minutes) into a part of a day e.g. midday.
 def convert_time_to_daypart():
@@ -154,13 +133,64 @@ def convert_time_to_daypart():
         dayPart = 9
 
 
-convert_time_to_daypart()
+# Convert the datetime month to an integer that corresponds with the monthList
+def convert_month():
+    global currentMonth
+    if todayDate.strftime("%B") == "January":
+        currentMonth = 1
+    elif todayDate.strftime("%B") == "February":
+        currentMonth = 2
+    elif todayDate.strftime("%B") == "March":
+        currentMonth = 3
+    elif todayDate.strftime("%B") == "April":
+        currentMonth = 4
+    elif todayDate.strftime("%B") == "May":
+        currentMonth = 5
+    elif todayDate.strftime("%B") == "June":
+        currentMonth = 6
+    elif todayDate.strftime("%B") == "July":
+        currentMonth = 7
+    elif todayDate.strftime("%B") == "August":
+        currentMonth = 8
+    elif todayDate.strftime("%B") == "September":
+        currentMonth = 9
+    elif todayDate.strftime("%B") == "October":
+        currentMonth = 10
+    elif todayDate.strftime("%B") == "November":
+        currentMonth = 11
+    elif todayDate.strftime("%B") == "December":
+        currentMonth = 12
+    return currentMonth
 
-convertedDay = str(day)
+
+def generate_weather():
+    global temp, precipitation, time, day, todayDate, timeInput
+    # Takes user input for the time of day (in minutes) and turns into an integer
+    timeInput = input("Enter a time of day:")
+    timeInput = int(timeInput)
+    time = timeInput
+    # Provides a semi-random temperature based on the monthly average on a gaussian curve
+    temp = round(random.gauss(mu, sigma))
+    # While loop to iterate the day counter based on the number of minutes inputted by user
+    while time > 1440:
+        time = time - 1440
+        day = day + 1
+        todayDate = todayDate + datetime.timedelta(days=1)
+    convert_month()
+    tell_weather()
+    precipitation = random.choice(precList)
+    snowing()
+    snow_levels()
+    convert_time_to_daypart()
+    # convertedDay = str(day) - not working for now
+    # print(monthList[currentMonth]) - cannot get this to work
 
 
 # Loop to create a menu. This is not final and some options are just for testing at the moment.
 while True:
+
+    generate_weather()
+
     print("1) Tell date")
     print("2) Tell time (day part + month)")
     print("3) Look at moon")
@@ -168,7 +198,8 @@ while True:
     print("5) Tell snow levels (number and description)")
     print("6) Tell wind")
     print("7) Tell terrain")
-    print("8) Quit")
+    print("8) Regenerate weather")
+    print("9) Quit")
 
     choice = input("Enter choice:")
 
@@ -180,7 +211,7 @@ while True:
               todayDate.strftime("%Y"))
     elif (choice == "2"):
         print("It is", timeList[dayPart])
-        print(monthList[1])
+        print(monthList[currentMonth])
     elif (choice == "3"):
         print(moonList[todayMoon])
     elif (choice == "4"):
@@ -193,7 +224,9 @@ while True:
         print("Wind is", random.choice(windList))
     elif (choice == "7"):
         print(terrainList[currentLocation])
-    elif (choice == "8" or "q"):
+    elif (choice == "8"):
+        generate_weather()
+    elif (choice == "9" or "q"):
         break
     else:
         print("Invalid option. Please try again.")
