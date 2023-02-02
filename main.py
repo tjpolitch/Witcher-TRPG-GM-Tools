@@ -164,11 +164,7 @@ def convert_month():
 
 
 def generate_weather():
-    global temp, precipitation, time, day, todayDate, timeInput
-    # Takes user input for the time of day (in minutes) and turns into an integer
-    timeInput = input("Enter a time of day:")
-    timeInput = int(timeInput)
-    time = timeInput
+    global temp, precipitation, day, todayDate, time
     # Provides a semi-random temperature based on the monthly average on a gaussian curve
     temp = round(random.gauss(mu, sigma))
     # While loop to iterate the day counter based on the number of minutes inputted by user
@@ -186,9 +182,13 @@ def generate_weather():
     # print(monthList[currentMonth]) - cannot get this to work
 
 
+# Takes user input for the time of day (in minutes) and turns into an integer
+timeInput = input("Enter a time of day:")
+timeInput = int(timeInput)
+time = timeInput
+
 # Loop to create a menu. This is not final and some options are just for testing at the moment.
 while True:
-
     generate_weather()
 
     print("1) Tell date")
@@ -199,14 +199,13 @@ while True:
     print("6) Tell wind")
     print("7) Tell terrain")
     print("8) Regenerate weather")
-    print("9) Quit")
+    print("9) Regenerate time")
+    print("10) Quit")
 
     choice = input("Enter choice:")
-
     choice = choice.strip()
 
     if (choice == "1"):
-        # not connected to other stats yet
         print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"), ",",
               todayDate.strftime("%Y"))
     elif (choice == "2"):
@@ -226,7 +225,46 @@ while True:
         print(terrainList[currentLocation])
     elif (choice == "8"):
         generate_weather()
-    elif (choice == "9" or "q"):
+    elif (choice == "9"):
+
+
+        while True:
+            print("1) Regenerate time")
+            print("2) Step forward time 3 hours")
+            print("3) Step forward time 1 day")
+            print("4) Go back to Main Menu")
+            choice = input("Enter choice:")
+            choice = choice.strip()
+            if (choice == "1"):
+                generate_weather()
+                timeInput = input("Enter a time of day:")
+                timeInput = int(timeInput)
+                time = timeInput
+                print("It is now", timeList[dayPart])
+                print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
+                      ",",
+                      todayDate.strftime("%Y"))
+            elif (choice == "2"):
+                generate_weather()
+                time = time + 180
+                print("It is now", timeList[dayPart])
+                print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
+                      ",",
+                      todayDate.strftime("%Y"))
+            elif (choice == "3"):
+                generate_weather()
+                time = time + 1440
+                print("It is now", timeList[dayPart])
+                print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
+                      ",",
+                      todayDate.strftime("%Y"))
+            elif (choice == "4"):
+                break
+            else:
+                print("Invalid option. Please try again.")
+
+
+    elif (choice == "10" or "q"):
         break
     else:
         print("Invalid option. Please try again.")
