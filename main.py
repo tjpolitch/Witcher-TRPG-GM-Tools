@@ -32,19 +32,22 @@ precipitation = 0
 snowLevel = 0
 weather = 0
 choice = ""
+today = 0
 
 
 def moon_phase():
-    global todayMoon
-    int(todayDate.strftime("%d"))# todayDate.strftime("%d")
-    if todayDate == 1:
+    global todayMoon, today
+    today = int(todayDate.strftime("%d"))# todayDate.strftime("%d")
+    if today == 1:
         todayMoon = 0
-    elif todayDate == 14:
+    elif today == 14:
         todayMoon = 4
-    elif todayDate == 7:
+    elif today == 7:
         todayMoon = 2
-    elif todayDate == 21:
+    elif today == 21:
         todayMoon = 6
+    else:
+        todayMoon = 7 #just for testing
 
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
