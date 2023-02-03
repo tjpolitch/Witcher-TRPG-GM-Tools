@@ -1,4 +1,3 @@
-
 import random
 import datetime
 import calendar
@@ -6,16 +5,19 @@ import calendar
 tempList = ["freezing", "cold", "cool", "warm", "hot"]
 precList = ["snowing", "sleet", "raining", "drizzling", "foggy", "overcast", "cloudy", "clear"]
 windList = ["light", "strong", "howling"]
-timeList = ["midnight", "the small hours", "early morning", "late morning", "midday", "early afternoon", "late afternoon", "evening"]
-terrainList = ["plains", "forest", "dark forest", "hills", "mountains", "high mountains", "lake", "river", "marshlands", "bog", "coast"]
+timeList = ["midnight", "the small hours", "early morning", "late morning", "midday", "early afternoon",
+            "late afternoon", "evening"]
+terrainList = ["plains", "forest", "dark forest", "hills", "mountains", "high mountains", "lake", "river", "marshlands",
+               "bog", "coast"]
 seasonList = ["summer", "autumn", "winter", "spring"]
 monthList = ["na", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
 snowDepth = ["none", "light", "medium", "heavy"]
-moonList = ["full moon", "waning gibbous", "last quarter", "waning crescent", "new moon", "waxing crescent", "first quarter", "waxing gibbous"]
+moonList = ["full moon", "waning gibbous", "last quarter", "waning crescent", "new moon", "waxing crescent",
+            "first quarter", "waxing gibbous"]
 road = bool
 choice = ""
 
-todayMoon = random.randint(0,7)
+todayMoon = 0 #random.randint(0, 7)
 todayDate = datetime.datetime(1272, 5, 1)
 dayPart = 0
 currentLocation = random.randint(0, 9)
@@ -30,6 +32,19 @@ precipitation = 0
 snowLevel = 0
 weather = 0
 choice = ""
+
+
+def moon_phase():
+    global todayMoon
+    int(todayDate.strftime("%d"))# todayDate.strftime("%d")
+    if todayDate == 1:
+        todayMoon = 0
+    elif todayDate == 14:
+        todayMoon = 4
+    elif todayDate == 7:
+        todayMoon = 2
+    elif todayDate == 21:
+        todayMoon = 6
 
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
@@ -113,6 +128,7 @@ def snow_levels():
 
 # Function to convert the time of the day (in minutes) into a part of a day e.g. midday.
 def convert_time_to_daypart():
+    global dayPart
     if time in range(90, 269):
         dayPart = 1
     elif time in range(270, 449):
@@ -130,7 +146,7 @@ def convert_time_to_daypart():
     elif time in range(1170, 1349):
         dayPart = 8
     else:
-        dayPart = 9
+        dayPart = 0
 
 
 # Convert the datetime month to an integer that corresponds with the monthList
@@ -178,6 +194,7 @@ def generate_weather():
     snowing()
     snow_levels()
     convert_time_to_daypart()
+    moon_phase()
     # convertedDay = str(day) - not working for now
     # print(monthList[currentMonth]) - cannot get this to work
 
@@ -205,28 +222,27 @@ while True:
     choice = input("Enter choice:")
     choice = choice.strip()
 
-    if (choice == "1"):
+    if choice == "1":
         print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"), ",",
               todayDate.strftime("%Y"))
-    elif (choice == "2"):
+    elif choice == "2":
         print("It is", timeList[dayPart])
         print(monthList[currentMonth])
-    elif (choice == "3"):
+    elif choice == "3":
         print(moonList[todayMoon])
-    elif (choice == "4"):
+    elif choice == "4":
         print(temp, "degrees")
         print("The weather is currently", weather, "and", precipitation)
-    elif (choice == "5"):
+    elif choice == "5":
         print("The snow level is ", snowDepth[snowLevel])
         print(snowLevel)
-    elif (choice == "6"):
+    elif choice == "6":
         print("Wind is", random.choice(windList))
-    elif (choice == "7"):
+    elif choice == "7":
         print(terrainList[currentLocation])
-    elif (choice == "8"):
+    elif choice == "8":
         generate_weather()
-    elif (choice == "9"):
-
+    elif choice == "9":
 
         while True:
             print("1) Regenerate time")
@@ -235,7 +251,7 @@ while True:
             print("4) Go back to Main Menu")
             choice = input("Enter choice:")
             choice = choice.strip()
-            if (choice == "1"):
+            if choice == "1":
                 generate_weather()
                 timeInput = input("Enter a time of day:")
                 timeInput = int(timeInput)
@@ -244,27 +260,27 @@ while True:
                 print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
                       ",",
                       todayDate.strftime("%Y"))
-            elif (choice == "2"):
+            elif choice == "2":
                 generate_weather()
                 time = time + 180
                 print("It is now", timeList[dayPart])
                 print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
                       ",",
                       todayDate.strftime("%Y"))
-            elif (choice == "3"):
+            elif choice == "3":
                 generate_weather()
                 time = time + 1440
                 print("It is now", timeList[dayPart])
                 print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
                       ",",
                       todayDate.strftime("%Y"))
-            elif (choice == "4"):
+            elif choice == "4":
                 break
             else:
                 print("Invalid option. Please try again.")
 
 
-    elif (choice == "10" or "q"):
+    elif choice == "10" or "q":
         break
     else:
         print("Invalid option. Please try again.")
