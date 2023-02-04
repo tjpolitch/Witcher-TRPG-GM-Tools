@@ -27,6 +27,7 @@ sigma = 6
 mu = 0
 time = 0
 day = 1
+moonDay = 1
 temp = 0
 precipitation = 0
 snowLevel = 0
@@ -35,19 +36,33 @@ choice = ""
 today = 0
 
 
+# Tells the phase of the moon based on a cycle of 28 days
 def moon_phase():
-    global todayMoon, today
-    today = int(todayDate.strftime("%d"))# todayDate.strftime("%d")
-    if today == 1:
-        todayMoon = 0
-    elif today == 14:
-        todayMoon = 4
-    elif today == 7:
-        todayMoon = 2
-    elif today == 21:
-        todayMoon = 6
+    global todayMoon, moonDay
+    # today = int(todayDate.strftime("%d"))# todayDate.strftime("%d")
+    if moonDay <= 28:
+        moonDay = moonDay + 1
     else:
-        todayMoon = 7 #just for testing
+        moonDay = 1
+
+    if moonDay == 1:
+        todayMoon = 0
+    elif moonDay in range(2, 7):
+        todayMoon = 1
+    elif moonDay == 8:
+        todayMoon = 1
+    elif moonDay in range(9, 14):
+        todayMoon = 2
+    elif moonDay == 15:
+        todayMoon = 3
+    elif moonDay in range(16, 21):
+        todayMoon = 4
+    elif moonDay == 15:
+        todayMoon = 5
+    elif moonDay in range(23, 28):
+        todayMoon = 6
+    elif moonDay == 22:
+        todayMoon = 7
 
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
@@ -190,6 +205,7 @@ def generate_weather():
     while time > 1440:
         time = time - 1440
         day = day + 1
+
         todayDate = todayDate + datetime.timedelta(days=1)
     convert_month()
     tell_weather()
@@ -232,6 +248,7 @@ while True:
         print("It is", timeList[dayPart])
         print(monthList[currentMonth])
     elif choice == "3":
+        moon_phase()
         print(moonList[todayMoon])
     elif choice == "4":
         print(temp, "degrees")
