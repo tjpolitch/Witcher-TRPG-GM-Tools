@@ -39,12 +39,13 @@ today = 0
 # Tells the phase of the moon based on a cycle of 28 days
 def moon_phase():
     global todayMoon, moonDay
-    # today = int(todayDate.strftime("%d"))# todayDate.strftime("%d")
+    # advances the moon cycle forward one day and resets at 28
     if moonDay <= 28:
         moonDay = moonDay + 1
     else:
         moonDay = 1
 
+# tells the phase of the moon
     if moonDay == 1:
         todayMoon = 0
     elif moonDay in range(2, 7):
@@ -272,24 +273,24 @@ while True:
             choice = input("Enter choice:")
             choice = choice.strip()
             if choice == "1":
-                generate_weather()
                 timeInput = input("Enter a time of day:")
                 timeInput = int(timeInput)
-                time = timeInput
+                time = time + timeInput
+                generate_weather()
                 print("It is now", timeList[dayPart])
                 print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
                       ",",
                       todayDate.strftime("%Y"))
             elif choice == "2":
-                generate_weather()
                 time = time + 180
+                generate_weather()
                 print("It is now", timeList[dayPart])
                 print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
                       ",",
                       todayDate.strftime("%Y"))
             elif choice == "3":
-                generate_weather()
                 time = time + 1440
+                generate_weather()
                 print("It is now", timeList[dayPart])
                 print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
                       ",",
