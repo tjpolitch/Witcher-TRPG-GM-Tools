@@ -34,6 +34,7 @@ snowLevel = 0
 weather = 0
 choice = ""
 today = 0
+snowChance = 0
 
 
 # Tells the phase of the moon based on a cycle of 28 days
@@ -68,6 +69,7 @@ def moon_phase():
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
 def monthly_temps():
+    global mu
     if currentMonth == 1:
         mu = -2
         return mu
@@ -125,7 +127,7 @@ def tell_weather():
 # Function that determines whether it is snowing based on whether the temp is freezing (below 0) and then giving it a 50/50 chance
 # A boolean should probably be added in here
 def snowing():
-    global temp, precipitation
+    global temp, precipitation, snowChance
     if temp < 0:
         snowChance = random.randint(1, 2)
         if snowChance == 1:
@@ -152,18 +154,16 @@ def convert_time_to_daypart():
         dayPart = 1
     elif time in range(270, 449):
         dayPart = 2
-    elif time in range(450, 539):
+    elif time in range(450, 629):
         dayPart = 3
-    elif time in range(540, 629):
+    elif time in range(630, 809):
         dayPart = 4
-    elif time in range(630, 819):
-        dayPart = 5
     elif time in range(810, 989):
+        dayPart = 5
+    elif time in range(990, 1169):
         dayPart = 6
-    elif time in range(990, 11699):
-        dayPart = 7
     elif time in range(1170, 1349):
-        dayPart = 8
+        dayPart = 7
     else:
         dayPart = 0
 
@@ -200,9 +200,9 @@ def convert_month():
 
 # Moves time forward
 def forward_time():
-    # While loop to iterate the day counter based on the number of minutes inputted by user
+    # Iterates the day counter based on the number of minutes inputted by user
     global time, day, todayDate
-    while time > 1440:
+    if time > 1440:
         time = time - 1440
         day = day + 1
         todayDate = todayDate + datetime.timedelta(days=1)
@@ -211,6 +211,7 @@ def forward_time():
 def generate_weather():
     global temp, precipitation, day, todayDate, time
     convert_month()
+    monthly_temps()
     tell_weather()
     # Provides a semi-random temperature based on the monthly average on a gaussian curve
     temp = round(random.gauss(mu, sigma))
