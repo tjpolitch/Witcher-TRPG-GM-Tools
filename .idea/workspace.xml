@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Created a function for moving time forward by a set amount">
+    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Resolved issues with telling what part of the day it is.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -128,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675760866361</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Resolved issues with telling what part of the day it is.">
+      <created>1675763379456</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1675763379456</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -139,6 +146,7 @@
     <MESSAGE value="Resolved issue with moon phase function although still not final." />
     <MESSAGE value="CHanged the moon cycle to a standard 28 days. More testing required." />
     <MESSAGE value="Created a function for moving time forward by a set amount" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a function for moving time forward by a set amount" />
+    <MESSAGE value="Resolved issues with telling what part of the day it is." />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolved issues with telling what part of the day it is." />
   </component>
 </project>

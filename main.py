@@ -72,40 +72,28 @@ def monthly_temps():
     global mu
     if currentMonth == 1:
         mu = -2
-        return mu
     elif currentMonth == 2:
         mu = -1
-        return mu
     elif currentMonth == 3:
         mu = 3
-        return mu
     elif currentMonth == 4:
         mu = 9
-        return mu
     elif currentMonth == 5:
         mu = 14
-        return mu
     elif currentMonth == 6:
         mu = 17
-        return mu
     elif currentMonth == 7:
         mu = 19
-        return mu
     elif currentMonth == 8:
         mu = 18
-        return mu
     elif currentMonth == 9:
         mu = 14
-        return mu
     elif currentMonth == 10:
         mu = 9
-        return mu
     elif currentMonth == 11:
         mu = 3
-        return mu
     elif currentMonth == 12:
         mu = 0
-        return mu
 
 
 # Provide a weather description based on the temperature
@@ -202,7 +190,7 @@ def convert_month():
 def forward_time():
     # Iterates the day counter based on the number of minutes inputted by user
     global time, day, todayDate
-    if time > 1440:
+    while time > 1440:
         time = time - 1440
         day = day + 1
         todayDate = todayDate + datetime.timedelta(days=1)
@@ -212,11 +200,11 @@ def generate_weather():
     global temp, precipitation, day, todayDate, time
     convert_month()
     monthly_temps()
-    tell_weather()
     # Provides a semi-random temperature based on the monthly average on a gaussian curve
-    temp = round(random.gauss(mu, sigma))
-    forward_time()
     precipitation = random.choice(precList)
+    temp = round(random.gauss(mu, sigma))
+    tell_weather()
+    forward_time()
     snowing()
     snow_levels()
     convert_time_to_daypart()
@@ -225,7 +213,7 @@ def generate_weather():
     # print(monthList[currentMonth]) - cannot get this to work
 
 
-# Takes user input for the time of day (in minutes) and turns into an integer
+# Takes user input for the time of day (in minutes) and turns into an integer - this is here for testing purposes
 timeInput = input("Enter a time of day:")
 timeInput = int(timeInput)
 time = timeInput
@@ -264,7 +252,7 @@ while True:
         print("The snow level is ", snowDepth[snowLevel])
         print(snowLevel)
     elif choice == "6":
-        print(f"Wind is {random.choice(windList)}") #test f-string function - I will adjust more later
+        print(f"Wind is {random.choice(windList)}")  # test f-string function - I will adjust more later
     elif choice == "7":
         print(terrainList[currentLocation])
     elif choice == "8":
@@ -275,7 +263,8 @@ while True:
             print("1) Regenerate time")
             print("2) Step forward time 3 hours")
             print("3) Step forward time 1 day")
-            print("4) Go back to Main Menu")
+            print("4) Step forward time 1 week")
+            print("5) Go back to Main Menu")
             choice = input("Enter choice:")
             choice = choice.strip()
             if choice == "1":
@@ -302,10 +291,16 @@ while True:
                       ",",
                       todayDate.strftime("%Y"))
             elif choice == "4":
+                time = time + 10080
+                generate_weather()
+                print("It is now", timeList[dayPart])
+                print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
+                      ",",
+                      todayDate.strftime("%Y"))
+            elif choice == "5":
                 break
             else:
                 print("Invalid option. Please try again.")
-
 
     elif choice == "10" or "q":
         break
