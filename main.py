@@ -253,12 +253,12 @@ while True:
         print(moonList[todayMoon])
     elif choice == "4":
         print(temp, "degrees")
-        print("The weather is currently", weather, "and", precipitation)
+        print(f"The weather is currently {weather} and {precipitation}")
     elif choice == "5":
         print("The snow level is ", snowDepth[snowLevel])
         print(snowLevel)
     elif choice == "6":
-        print("Wind is", random.choice(windList))
+        print(f"Wind is {random.choice(windList)}") #test f-string function - I will adjust more later
     elif choice == "7":
         print(terrainList[currentLocation])
     elif choice == "8":
