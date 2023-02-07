@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="CHanged the moon cycle to a standard 28 days. More testing required." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2L4eaDUu2kX3fzBTrCV2hR43PGq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\taylo\PycharmProjects\Witcher TRPG GM Tools\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.9 (Witcher TRPG GM Tools)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="" />
+      <created>1675134845124</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675134845124</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Menu created for further code organisation.">
+      <created>1675288331666</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675288331666</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Menu created for further code organisation.">
+      <created>1675290637141</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675290637141</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added the generate_weather function to the start of the while loop. Code now works in the menu for the most part.">
+      <created>1675307691497</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675307691497</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added a sub-menu for time regeneration. It does skip forward time but at this stage does not display the correct time until you go back to the Main menu.">
+      <created>1675374932965</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675374932965</updated>
+    </task>
+    <task id="LOCAL-00005" summary="The time regeneration still does not work correctly but I started on the moon phase function.">
+      <created>1675402151815</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675402151815</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Resolved issue with moon phase function although still not final.">
+      <created>1675411685621</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675411685621</updated>
+    </task>
+    <task id="LOCAL-00007" summary="CHanged the moon cycle to a standard 28 days. More testing required.">
+      <created>1675511225020</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675511225021</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Menu created for further code organisation." />
+    <MESSAGE value="Added the generate_weather function to the start of the while loop. Code now works in the menu for the most part." />
+    <MESSAGE value="Added a sub-menu for time regeneration. It does skip forward time but at this stage does not display the correct time until you go back to the Main menu." />
+    <MESSAGE value="The time regeneration still does not work correctly but I started on the moon phase function." />
+    <MESSAGE value="Resolved issue with moon phase function although still not final." />
+    <MESSAGE value="CHanged the moon cycle to a standard 28 days. More testing required." />
+    <option name="LAST_COMMIT_MESSAGE" value="CHanged the moon cycle to a standard 28 days. More testing required." />
+  </component>
+</project>
