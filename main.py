@@ -198,18 +198,23 @@ def convert_month():
     return currentMonth
 
 
-def generate_weather():
-    global temp, precipitation, day, todayDate, time
-    # Provides a semi-random temperature based on the monthly average on a gaussian curve
-    temp = round(random.gauss(mu, sigma))
+# Moves time forward
+def forward_time():
     # While loop to iterate the day counter based on the number of minutes inputted by user
+    global time, day, todayDate
     while time > 1440:
         time = time - 1440
         day = day + 1
-
         todayDate = todayDate + datetime.timedelta(days=1)
+
+
+def generate_weather():
+    global temp, precipitation, day, todayDate, time
     convert_month()
     tell_weather()
+    # Provides a semi-random temperature based on the monthly average on a gaussian curve
+    temp = round(random.gauss(mu, sigma))
+    forward_time()
     precipitation = random.choice(precList)
     snowing()
     snow_levels()
