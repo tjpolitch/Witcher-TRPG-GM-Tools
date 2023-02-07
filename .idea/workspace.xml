@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Resolved issues with telling what part of the day it is.">
+    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Resolved issue where monthly temperature averages were not working.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -135,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675763379456</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Resolved issue where monthly temperature averages were not working.">
+      <created>1675765367572</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675765367572</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -147,6 +154,7 @@
     <MESSAGE value="CHanged the moon cycle to a standard 28 days. More testing required." />
     <MESSAGE value="Created a function for moving time forward by a set amount" />
     <MESSAGE value="Resolved issues with telling what part of the day it is." />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolved issues with telling what part of the day it is." />
+    <MESSAGE value="Resolved issue where monthly temperature averages were not working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolved issue where monthly temperature averages were not working." />
   </component>
 </project>

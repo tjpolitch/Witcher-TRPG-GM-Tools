@@ -69,31 +69,235 @@ def moon_phase():
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
 def monthly_temps():
-    global mu
+    global mu, dayPart
     if currentMonth == 1:
-        mu = -2
+        if dayPart == 0:
+            mu = -2
+        if dayPart == 1:
+            mu = -2
+        if dayPart == 2:
+            mu = -2
+        if dayPart == 3:
+            mu = -2
+        if dayPart == 4:
+            mu = -2
+        if dayPart == 5:
+            mu = -2
+        if dayPart == 6:
+            mu = -2
+        if dayPart == 7:
+            mu = -2
+        if dayPart == 8:
+            mu = -2
     elif currentMonth == 2:
-        mu = -1
+        if dayPart == 0:
+            mu = -1
+        if dayPart == 1:
+            mu = -1
+        if dayPart == 2:
+            mu = -1
+        if dayPart == 3:
+            mu = -1
+        if dayPart == 4:
+            mu = -1
+        if dayPart == 5:
+            mu = -1
+        if dayPart == 6:
+            mu = -1
+        if dayPart == 7:
+            mu = -1
+        if dayPart == 8:
+            mu = -1
     elif currentMonth == 3:
-        mu = 3
+        if dayPart == 0:
+            mu = 3
+        if dayPart == 1:
+            mu = 3
+        if dayPart == 2:
+            mu = 3
+        if dayPart == 3:
+            mu = 3
+        if dayPart == 4:
+            mu = 3
+        if dayPart == 5:
+            mu = 3
+        if dayPart == 6:
+            mu = 3
+        if dayPart == 7:
+            mu = 3
+        if dayPart == 8:
+            mu = 3
     elif currentMonth == 4:
-        mu = 9
+        if dayPart == 0:
+            mu = 9
+        if dayPart == 1:
+            mu = 9
+        if dayPart == 2:
+            mu = 9
+        if dayPart == 3:
+            mu = 9
+        if dayPart == 4:
+            mu = 9
+        if dayPart == 5:
+            mu = 9
+        if dayPart == 6:
+            mu = 9
+        if dayPart == 7:
+            mu = 9
+        if dayPart == 8:
+            mu = 9
     elif currentMonth == 5:
-        mu = 14
+        if dayPart == 0:
+            mu = 14
+        if dayPart == 1:
+            mu = 14
+        if dayPart == 2:
+            mu = 14
+        if dayPart == 3:
+            mu = 14
+        if dayPart == 4:
+            mu = 14
+        if dayPart == 5:
+            mu = 14
+        if dayPart == 6:
+            mu = 14
+        if dayPart == 7:
+            mu = 14
+        if dayPart == 8:
+            mu = 14
     elif currentMonth == 6:
-        mu = 17
+        if dayPart == 0:
+            mu = 17
+        if dayPart == 1:
+            mu = 17
+        if dayPart == 2:
+            mu = 17
+        if dayPart == 3:
+            mu = 17
+        if dayPart == 4:
+            mu = 17
+        if dayPart == 5:
+            mu = 17
+        if dayPart == 6:
+            mu = 17
+        if dayPart == 7:
+            mu = 17
+        if dayPart == 8:
+            mu = 17
     elif currentMonth == 7:
-        mu = 19
+        if dayPart == 0:
+            mu = 19
+        if dayPart == 1:
+            mu = 19
+        if dayPart == 2:
+            mu = 19
+        if dayPart == 3:
+            mu = 19
+        if dayPart == 4:
+            mu = 19
+        if dayPart == 5:
+            mu = 19
+        if dayPart == 6:
+            mu = 19
+        if dayPart == 7:
+            mu = 19
+        if dayPart == 8:
+            mu = 19
     elif currentMonth == 8:
-        mu = 18
+        if dayPart == 0:
+            mu = 18
+        if dayPart == 1:
+            mu = 18
+        if dayPart == 2:
+            mu = 18
+        if dayPart == 3:
+            mu = 18
+        if dayPart == 4:
+            mu = 18
+        if dayPart == 5:
+            mu = 18
+        if dayPart == 6:
+            mu = 18
+        if dayPart == 7:
+            mu = 18
+        if dayPart == 8:
+            mu = 18
     elif currentMonth == 9:
-        mu = 14
+        if dayPart == 0:
+            mu = 14
+        if dayPart == 1:
+            mu = 14
+        if dayPart == 2:
+            mu = 14
+        if dayPart == 3:
+            mu = 14
+        if dayPart == 4:
+            mu = 14
+        if dayPart == 5:
+            mu = 14
+        if dayPart == 6:
+            mu = 14
+        if dayPart == 7:
+            mu = 14
+        if dayPart == 8:
+            mu = 14
     elif currentMonth == 10:
-        mu = 9
+        if dayPart == 0:
+            mu = 9
+        if dayPart == 1:
+            mu = 9
+        if dayPart == 2:
+            mu = 9
+        if dayPart == 3:
+            mu = 9
+        if dayPart == 4:
+            mu = 9
+        if dayPart == 5:
+            mu = 9
+        if dayPart == 6:
+            mu = 9
+        if dayPart == 7:
+            mu = 9
+        if dayPart == 8:
+            mu = 9
     elif currentMonth == 11:
-        mu = 3
+        if dayPart == 0:
+            mu = 3
+        if dayPart == 1:
+            mu = 3
+        if dayPart == 2:
+            mu = 3
+        if dayPart == 3:
+            mu = 3
+        if dayPart == 4:
+            mu = 3
+        if dayPart == 5:
+            mu = 3
+        if dayPart == 6:
+            mu = 3
+        if dayPart == 7:
+            mu = 3
+        if dayPart == 8:
+            mu = 3
     elif currentMonth == 12:
-        mu = 0
+        if dayPart == 0:
+            mu = 0
+        if dayPart == 1:
+            mu = 0
+        if dayPart == 2:
+            mu = 0
+        if dayPart == 3:
+            mu = 0
+        if dayPart == 4:
+            mu = 0
+        if dayPart == 5:
+            mu = 0
+        if dayPart == 6:
+            mu = 0
+        if dayPart == 7:
+            mu = 0
+        if dayPart == 8:
+            mu = 0
 
 
 # Provide a weather description based on the temperature
@@ -198,16 +402,16 @@ def forward_time():
 
 def generate_weather():
     global temp, precipitation, day, todayDate, time
+    forward_time()
+    convert_time_to_daypart()
     convert_month()
     monthly_temps()
     # Provides a semi-random temperature based on the monthly average on a gaussian curve
     precipitation = random.choice(precList)
     temp = round(random.gauss(mu, sigma))
     tell_weather()
-    forward_time()
     snowing()
     snow_levels()
-    convert_time_to_daypart()
     moon_phase()
     # convertedDay = str(day) - not working for now
     # print(monthList[currentMonth]) - cannot get this to work
