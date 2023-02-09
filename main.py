@@ -2,7 +2,7 @@ import random
 import datetime
 import calendar
 
-tempList = ["freezing", "cold", "cool", "warm", "hot"]
+tempList = ["freezing", "cold", "cool", "warm", "hot"] # can add 'mild' and other categories.
 precList = ["snowing", "sleet", "raining", "drizzling", "foggy", "overcast", "cloudy", "clear"]
 windList = ["light", "strong", "howling"]
 timeList = ["midnight", "the small hours", "early morning", "late morning", "midday", "early afternoon",
