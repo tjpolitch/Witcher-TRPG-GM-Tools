@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Resolved issue where monthly temperature averages were not working.">
+    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Started working on average temps for different day parts.">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -33,28 +33,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="Witcher TRPG GM Tools" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\taylo\PycharmProjects\Witcher TRPG GM Tools\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.9 (Witcher TRPG GM Tools)" />
+      <option name="SDK_HOME" value="C:\Users\taylo\AppData\Local\Programs\Python\Python36-32\python.exe" />
+      <option name="SDK_NAME" value="Python 3.6 (Witcher-TRPG-GM-Tools)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -144,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675765367572</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Started working on average temps for different day parts.">
+      <created>1675767100448</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675767100448</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -157,6 +163,7 @@
     <MESSAGE value="Created a function for moving time forward by a set amount" />
     <MESSAGE value="Resolved issues with telling what part of the day it is." />
     <MESSAGE value="Resolved issue where monthly temperature averages were not working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolved issue where monthly temperature averages were not working." />
+    <MESSAGE value="Started working on average temps for different day parts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working on average temps for different day parts." />
   </component>
 </project>

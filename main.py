@@ -36,6 +36,17 @@ choice = ""
 today = 0
 snowChance = 0
 
+class WeatherVariables:
+    def __init__(self, temp, precipitation, snowLevel):
+        self.temp = temp
+        self.precipitation = precipitation
+        self.snowLevel = snowLevel
+
+    def setSnowLevel(self, level):
+        self.temp -= level / 2
+        self.snowLevel = level
+
+
 
 # Tells the phase of the moon based on a cycle of 28 days
 def moon_phase():
@@ -67,28 +78,25 @@ def moon_phase():
         todayMoon = 7
 
 
+
+
+
+
+temperaturesModifiers = {
+    0: [-2,-2,-2,-2,-2,-2,-2,-2],
+    1: [-2,-2,-2,-2,-2,-2,-2,-2]
+}
+
+
 # Function for providing am average temp for each month - based on average temps in Warsaw
-def monthly_temps():
-    global mu, dayPart
+def monthly_temps(dayPart):
+
+    # this is equivalent of what you have below
+    mu = temperaturesModifiers[currentMonth][dayPart];
+
+    mu = 0
     if currentMonth == 1:
-        if dayPart == 0:
-            mu = -2
-        if dayPart == 1:
-            mu = -2
-        if dayPart == 2:
-            mu = -2
-        if dayPart == 3:
-            mu = -2
-        if dayPart == 4:
-            mu = -2
-        if dayPart == 5:
-            mu = -2
-        if dayPart == 6:
-            mu = -2
-        if dayPart == 7:
-            mu = -2
-        if dayPart == 8:
-            mu = -2
+        mu = tempJanuary[dayPart]
     elif currentMonth == 2:
         if dayPart == 0:
             mu = -1
@@ -299,6 +307,8 @@ def monthly_temps():
         if dayPart == 8:
             mu = 0
 
+    return mu
+
 
 # Provide a weather description based on the temperature
 def tell_weather():
@@ -405,7 +415,7 @@ def generate_weather():
     forward_time()
     convert_time_to_daypart()
     convert_month()
-    monthly_temps()
+    mu = monthly_temps(dayPart)
     # Provides a semi-random temperature based on the monthly average on a gaussian curve
     precipitation = random.choice(precList)
     temp = round(random.gauss(mu, sigma))
