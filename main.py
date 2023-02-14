@@ -10,10 +10,11 @@ timeList = ["midnight", "the small hours", "early morning", "late morning", "mid
 terrainList = ["plains", "forest", "dark forest", "hills", "mountains", "high mountains", "lake", "river", "marshlands",
                "bog", "coast"]
 seasonList = ["summer", "autumn", "winter", "spring"]
-monthList = ["na", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+monthList = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
 snowDepth = ["none", "light", "medium", "heavy"]
 moonList = ["full moon", "waning gibbous", "last quarter", "waning crescent", "new moon", "waxing crescent",
             "first quarter", "waxing gibbous"]
+listList = ["night", "sunrise", "day", "sunset"]
 road = bool
 choice = ""
 
@@ -36,15 +37,17 @@ choice = ""
 today = 0
 snowChance = 0
 
-class WeatherVariables:
-    def __init__(self, temp, precipitation, snowLevel):
-        self.temp = temp
-        self.precipitation = precipitation
-        self.snowLevel = snowLevel
 
-    def setSnowLevel(self, level):
-        self.temp -= level / 2
-        self.snowLevel = level
+# Spence created this as an example of how a weather variables class can look
+# class WeatherVariables:
+#     def __init__(self, temp, precipitation, snowLevel):
+#         self.temp = temp
+#         self.precipitation = precipitation
+#         self.snowLevel = snowLevel
+#
+#     def setSnowLevel(self, level):
+#         self.temp -= level / 2
+#         self.snowLevel = level
 
 
 
@@ -77,14 +80,46 @@ def moon_phase():
     elif moonDay == 22:
         todayMoon = 7
 
-
-
-
-
-
+# row is month and day part starts at midnight. including temps based on the 15th of each month on Warsaw
 temperaturesModifiers = {
-    0: [-2,-2,-2,-2,-2,-2,-2,-2],
-    1: [-2,-2,-2,-2,-2,-2,-2,-2]
+    0: [-2, -3, -5, -1, 1, 1, 0, -1],
+    1: [-2, -3, -5, -1, 1, 1, 2, 0],
+    2: [1, 0, -1, 3, 4, 5, 7, 2],
+    3: [5, 4, 3, 8, 9, 11, 12, 14],
+    4: [13, 11, 8, 15, 16, 17, 18, 20],
+    5: [13, 11, 16, 17, 18, 19, 20, 22],
+    6: [16, 13, 16, 18, 20, 21, 23, 24],
+    7: [17, 15, 13, 17, 20, 21, 23, 24],
+    8: [11, 9, 8, 13, 15, 17, 19, 13],
+    9: [6, 5, 4, 8, 9, 11, 13, 10],
+    10: [2, 1, 0, 3, 4, 5, 6, 2],
+    11: [-2, -3, -4, 0, 1, 2, 0, -1]
+}
+
+# Day Part/ Time Key
+#        midnight: 10:30PM - 1:30AM
+#     small hours: 1:30AM - 4:30 AM
+#   early morning: 4:30AM - 7:30 AM
+#    late morning: 7:30AM - 10:30AM
+#          midday: 10:30AM - 1:30PM
+# early afternoon: 1:30PM - 4:30PM
+#  late afternoon: 4:30PM - 7:30PM
+#         evening: 7:30PM - 10:30PM
+
+# sunset and sunrise for each month; 0 = night, 1 = sunrise; 2 = day, 3 = sunset: might actually replace this with a spreadsheet of sunrise/sunset times https://www.timeanddate.com/sun/poland/warsaw?month=1&year=2023
+lightModifiers = {
+    0: [0, 0, 0, 1, 2, 3, 0, 0],
+    1: [0, 0, 1, 2, 2, 2, 3, 0],
+    2: [0, 0, 1, 2, 2, 2, 3, 0],
+    3: [0, 0, 1, 2, 2, 2, 2, 3],
+    4: [0, 0, 1, 2, 2, 2, 2, 3],
+    5: [0, 1, 2, 2, 2, 2, 2, 3],
+    6: [0, 1, 2, 2, 2, 2, 2, 3],
+    7: [0, 0, 1, 2, 2, 2, 2, 3],
+    8: [0, 0, 1, 2, 2, 2, 3, 0],
+    9: [0, 0, 1, 2, 2, 2, 3, 0],
+    10: [0, 0, 1, 2, 2, 3, 0, 0],
+    11: [0, 0, 0, 1, 2, 3, 0, 0]
 }
 
 
@@ -92,220 +127,11 @@ temperaturesModifiers = {
 def monthly_temps(dayPart):
 
     # this is equivalent of what you have below
-    mu = temperaturesModifiers[currentMonth][dayPart];
+    mu = temperaturesModifiers[currentMonth][dayPart]
 
-    mu = 0
-    if currentMonth == 1:
-        mu = tempJanuary[dayPart]
-    elif currentMonth == 2:
-        if dayPart == 0:
-            mu = -1
-        if dayPart == 1:
-            mu = -1
-        if dayPart == 2:
-            mu = -1
-        if dayPart == 3:
-            mu = -1
-        if dayPart == 4:
-            mu = -1
-        if dayPart == 5:
-            mu = -1
-        if dayPart == 6:
-            mu = -1
-        if dayPart == 7:
-            mu = -1
-        if dayPart == 8:
-            mu = -1
-    elif currentMonth == 3:
-        if dayPart == 0:
-            mu = 3
-        if dayPart == 1:
-            mu = 3
-        if dayPart == 2:
-            mu = 3
-        if dayPart == 3:
-            mu = 3
-        if dayPart == 4:
-            mu = 3
-        if dayPart == 5:
-            mu = 3
-        if dayPart == 6:
-            mu = 3
-        if dayPart == 7:
-            mu = 3
-        if dayPart == 8:
-            mu = 3
-    elif currentMonth == 4:
-        if dayPart == 0:
-            mu = 9
-        if dayPart == 1:
-            mu = 9
-        if dayPart == 2:
-            mu = 9
-        if dayPart == 3:
-            mu = 9
-        if dayPart == 4:
-            mu = 9
-        if dayPart == 5:
-            mu = 9
-        if dayPart == 6:
-            mu = 9
-        if dayPart == 7:
-            mu = 9
-        if dayPart == 8:
-            mu = 9
-    elif currentMonth == 5:
-        if dayPart == 0:
-            mu = 14
-        if dayPart == 1:
-            mu = 14
-        if dayPart == 2:
-            mu = 14
-        if dayPart == 3:
-            mu = 14
-        if dayPart == 4:
-            mu = 14
-        if dayPart == 5:
-            mu = 14
-        if dayPart == 6:
-            mu = 14
-        if dayPart == 7:
-            mu = 14
-        if dayPart == 8:
-            mu = 14
-    elif currentMonth == 6:
-        if dayPart == 0:
-            mu = 17
-        if dayPart == 1:
-            mu = 17
-        if dayPart == 2:
-            mu = 17
-        if dayPart == 3:
-            mu = 17
-        if dayPart == 4:
-            mu = 17
-        if dayPart == 5:
-            mu = 17
-        if dayPart == 6:
-            mu = 17
-        if dayPart == 7:
-            mu = 17
-        if dayPart == 8:
-            mu = 17
-    elif currentMonth == 7:
-        if dayPart == 0:
-            mu = 19
-        if dayPart == 1:
-            mu = 19
-        if dayPart == 2:
-            mu = 19
-        if dayPart == 3:
-            mu = 19
-        if dayPart == 4:
-            mu = 19
-        if dayPart == 5:
-            mu = 19
-        if dayPart == 6:
-            mu = 19
-        if dayPart == 7:
-            mu = 19
-        if dayPart == 8:
-            mu = 19
-    elif currentMonth == 8:
-        if dayPart == 0:
-            mu = 18
-        if dayPart == 1:
-            mu = 18
-        if dayPart == 2:
-            mu = 18
-        if dayPart == 3:
-            mu = 18
-        if dayPart == 4:
-            mu = 18
-        if dayPart == 5:
-            mu = 18
-        if dayPart == 6:
-            mu = 18
-        if dayPart == 7:
-            mu = 18
-        if dayPart == 8:
-            mu = 18
-    elif currentMonth == 9:
-        if dayPart == 0:
-            mu = 14
-        if dayPart == 1:
-            mu = 14
-        if dayPart == 2:
-            mu = 14
-        if dayPart == 3:
-            mu = 14
-        if dayPart == 4:
-            mu = 14
-        if dayPart == 5:
-            mu = 14
-        if dayPart == 6:
-            mu = 14
-        if dayPart == 7:
-            mu = 14
-        if dayPart == 8:
-            mu = 14
-    elif currentMonth == 10:
-        if dayPart == 0:
-            mu = 9
-        if dayPart == 1:
-            mu = 9
-        if dayPart == 2:
-            mu = 9
-        if dayPart == 3:
-            mu = 9
-        if dayPart == 4:
-            mu = 9
-        if dayPart == 5:
-            mu = 9
-        if dayPart == 6:
-            mu = 9
-        if dayPart == 7:
-            mu = 9
-        if dayPart == 8:
-            mu = 9
-    elif currentMonth == 11:
-        if dayPart == 0:
-            mu = 3
-        if dayPart == 1:
-            mu = 3
-        if dayPart == 2:
-            mu = 3
-        if dayPart == 3:
-            mu = 3
-        if dayPart == 4:
-            mu = 3
-        if dayPart == 5:
-            mu = 3
-        if dayPart == 6:
-            mu = 3
-        if dayPart == 7:
-            mu = 3
-        if dayPart == 8:
-            mu = 3
-    elif currentMonth == 12:
-        if dayPart == 0:
-            mu = 0
-        if dayPart == 1:
-            mu = 0
-        if dayPart == 2:
-            mu = 0
-        if dayPart == 3:
-            mu = 0
-        if dayPart == 4:
-            mu = 0
-        if dayPart == 5:
-            mu = 0
-        if dayPart == 6:
-            mu = 0
-        if dayPart == 7:
-            mu = 0
-        if dayPart == 8:
-            mu = 0
+    print(currentMonth)
+    print(dayPart)
+    print(mu)
 
     return mu
 
@@ -374,29 +200,29 @@ def convert_time_to_daypart():
 def convert_month():
     global currentMonth
     if todayDate.strftime("%B") == "January":
-        currentMonth = 1
+        currentMonth = 0
     elif todayDate.strftime("%B") == "February":
-        currentMonth = 2
+        currentMonth = 1
     elif todayDate.strftime("%B") == "March":
-        currentMonth = 3
+        currentMonth = 2
     elif todayDate.strftime("%B") == "April":
-        currentMonth = 4
+        currentMonth = 3
     elif todayDate.strftime("%B") == "May":
-        currentMonth = 5
+        currentMonth = 4
     elif todayDate.strftime("%B") == "June":
-        currentMonth = 6
+        currentMonth = 5
     elif todayDate.strftime("%B") == "July":
-        currentMonth = 7
+        currentMonth = 6
     elif todayDate.strftime("%B") == "August":
-        currentMonth = 8
+        currentMonth = 7
     elif todayDate.strftime("%B") == "September":
-        currentMonth = 9
+        currentMonth = 8
     elif todayDate.strftime("%B") == "October":
-        currentMonth = 10
+        currentMonth = 9
     elif todayDate.strftime("%B") == "November":
-        currentMonth = 11
+        currentMonth = 10
     elif todayDate.strftime("%B") == "December":
-        currentMonth = 12
+        currentMonth = 11
     return currentMonth
 
 
