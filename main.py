@@ -125,15 +125,12 @@ lightModifiers = {
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
 def monthly_temps(dayPart):
-
-    # this is equivalent of what you have below
     mu = temperaturesModifiers[currentMonth][dayPart]
-
     print(currentMonth)
     print(dayPart)
     print(mu)
-
     return mu
+
 
 
 # Provide a weather description based on the temperature
@@ -167,11 +164,11 @@ def snowing():
 def snow_levels():
     global snowLevel
     if temp <= 0 and precipitation == precList[0]:
-        snowLevel = snowLevel + 1
+        snowLevel += 1
     elif temp > 0 and snowLevel > 0:
-        snowLevel = - 1
+        snowLevel -= 1
     else:
-        snowLevel = snowLevel = 0
+        snowLevel = 0
     return snowLevel
 
 
@@ -289,8 +286,7 @@ while True:
         print(temp, "degrees")
         print(f"The weather is currently {weather} and {precipitation}")
     elif choice == "5":
-        print("The snow level is ", snowDepth[snowLevel])
-        print(snowLevel)
+        print(f"The snow level is {snowDepth[snowLevel]} ({snowLevel})")
     elif choice == "6":
         print(f"Wind is {random.choice(windList)}")  # test f-string function - I will adjust more later
     elif choice == "7":
@@ -304,7 +300,8 @@ while True:
             print("2) Step forward time 3 hours")
             print("3) Step forward time 1 day")
             print("4) Step forward time 1 week")
-            print("5) Go back to Main Menu")
+            print("5) Step forward time 4 weeks")
+            print("6) Go back to Main Menu")
             choice = input("Enter choice:")
             choice = choice.strip()
             if choice == "1":
@@ -338,6 +335,13 @@ while True:
                       ",",
                       todayDate.strftime("%Y"))
             elif choice == "5":
+                time = time + 10080 * 4
+                generate_weather()
+                print("It is now", timeList[dayPart])
+                print("Today's date is:", todayDate.strftime("%A"), todayDate.strftime("%B"), todayDate.strftime("%d"),
+                      ",",
+                      todayDate.strftime("%Y"))
+            elif choice == "6":
                 break
             else:
                 print("Invalid option. Please try again.")

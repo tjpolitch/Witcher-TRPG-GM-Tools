@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Small changes including to gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/main.xml" afterDir="false" />
+    <list default="true" id="a1f51052-cf78-487b-b143-76423d3074af" name="Changes" comment="Changed monthly temps to data dictionary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -145,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675765367572</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Changed monthly temps to data dictionary">
+      <created>1676351038109</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676351038110</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -158,6 +164,7 @@
     <MESSAGE value="Created a function for moving time forward by a set amount" />
     <MESSAGE value="Resolved issues with telling what part of the day it is." />
     <MESSAGE value="Resolved issue where monthly temperature averages were not working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolved issue where monthly temperature averages were not working." />
+    <MESSAGE value="Changed monthly temps to data dictionary" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed monthly temps to data dictionary" />
   </component>
 </project>
