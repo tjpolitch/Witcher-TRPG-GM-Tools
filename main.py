@@ -18,6 +18,7 @@ listList = ["night", "sunrise", "day", "sunset"]
 road = bool
 choice = ""
 
+
 todayMoon = 0 #random.randint(0, 7)
 todayDate = datetime.datetime(1272, 5, 1)
 dayPart = 0
@@ -122,6 +123,22 @@ lightModifiers = {
     11: [0, 0, 0, 1, 2, 3, 0, 0]
 }
 
+# Chance of particular precipitation based on the month - see precList for key
+precModifier = {
+    0: [0, 0, 0, 1, 2, 3, 0, 0],
+    1: [0, 0, 1, 2, 2, 2, 3, 0],
+    2: [0, 0, 1, 2, 2, 2, 3, 0],
+    3: [0, 0, 1, 2, 2, 2, 2, 3],
+    4: [0, 0, 1, 2, 2, 2, 2, 3],
+    5: [0, 1, 2, 2, 2, 2, 2, 3],
+    6: [0, 1, 2, 2, 2, 2, 2, 3],
+    7: [0, 0, 1, 2, 2, 2, 2, 3],
+    8: [0, 0, 1, 2, 2, 2, 3, 0],
+    9: [0, 0, 1, 2, 2, 2, 3, 0],
+    10: [0, 0, 1, 2, 2, 3, 0, 0],
+    11: [0, 0, 0, 1, 2, 3, 0, 0]
+}
+
 
 # Function for providing am average temp for each month - based on average temps in Warsaw
 def monthly_temps(dayPart):
@@ -130,7 +147,6 @@ def monthly_temps(dayPart):
     print(dayPart)
     print(mu)
     return mu
-
 
 
 # Provide a weather description based on the temperature
