@@ -19,7 +19,7 @@ road = bool
 choice = ""
 
 
-todayMoon = 0 #random.randint(0, 7)
+todayMoon = 0
 todayDate = datetime.datetime(1272, 5, 1)
 dayPart = 0
 currentLocation = random.randint(0, 9)
@@ -33,7 +33,7 @@ moonDay = 1
 temp = 0
 precipitation = 0
 snowLevel = 0
-weather = 0
+# weather = 0
 choice = ""
 today = 0
 snowChance = 0
@@ -162,7 +162,7 @@ def tell_weather():
         weather = tempList[3]
     if temp >= 31:
         weather = tempList[4]
-    return weather, temp
+
 
 
 # Function that determines whether it is snowing based on whether the temp is freezing (below 0) and then giving it a 50/50 chance
